@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    name: 'SAM Deployment'
+    name: 'deploy'
     runs-on: ubuntu-latest
 
     steps:
@@ -23,10 +23,18 @@ jobs:
         aws-region: eu-west-1
         aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
 
-    # Deploy SAM Stack when pushing to master
-    - name: AWS SAM Deploy
-      #if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    # Build SAM Stack
+    - name: sam build
+      
       # Make sure you are in the SAM-APP directory before running the build
-      run: |
-        sam build
-        sam deploy
+      run: sam build
+    
+    # Run tests - see other ci examples for different runtimes
+    #- name: test
+      
+        
+    # Deploy SAM Stack when pushing to master
+    - name: sam deploy
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      # Make sure you are in the SAM-APP directory before running the build
+      run: sam deploy
