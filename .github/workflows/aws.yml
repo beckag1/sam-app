@@ -32,6 +32,6 @@ jobs:
       #if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       # Make sure you are in the SAM-APP directory before running the build
       run: |
-        cd $SAM_APP_PATH
         sam build
         sam deploy
+      working-directory: $SAM_APP_PATH
