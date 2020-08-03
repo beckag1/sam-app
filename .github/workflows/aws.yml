@@ -8,7 +8,7 @@ on:
     
 # Set up the Variables we will need later
 env:
-  SAM_APP_PATH: .   # REPLACE WITH YOUR PATH TO YOUR SAM APP
+  SAM_APP_PATH: ./   # REPLACE WITH YOUR PATH TO YOUR SAM APP
 
 jobs:
   deploy:
