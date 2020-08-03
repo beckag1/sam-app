@@ -5,10 +5,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    
-# Set up the Variables we will need later
-env:
-  SAM_APP_PATH: ./   # REPLACE WITH YOUR PATH TO YOUR SAM APP
 
 jobs:
   deploy:
@@ -34,4 +30,3 @@ jobs:
       run: |
         sam build
         sam deploy
-      working-directory: $SAM_APP_PATH
